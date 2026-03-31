@@ -1,9 +1,82 @@
-<h2>{{data.name}}</h2>
-<p>{{data.email}}</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Preview</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #0f172a;
+            padding: 40px;
+        }
 
+        .resume {
+            background: white;
+            color: black;
+            padding: 30px;
+            max-width: 700px;
+            margin: auto;
+            border-radius: 10px;
+        }
+
+        .name {
+            font-size: 28px;
+            font-weight: bold;
+            color: #1e3a8a;
+        }
+
+        .section {
+            margin-top: 20px;
+        }
+
+        .section h3 {
+            border-bottom: 2px solid #ddd;
+        }
+
+        .download {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: #38bdf8;
+            border: none;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="resume">
+
+<div class="name">{{data.name}}</div>
+<p>{{data.email}} | {{data.phone}} | {{data.linkedin}}</p>
+
+<div class="section">
+<h3>Skills</h3>
+<p>{{data.skills}}</p>
+</div>
+
+<div class="section">
+<h3>Education</h3>
+<p>{{data.education}}</p>
+</div>
+
+<div class="section">
+<h3>Experience</h3>
+<p>{{data.experience}}</p>
+</div>
+
+</div>
+
+<div class="download">
 <form method="POST" action="/download-resume">
 {% for k,v in data.items() %}
 <input type="hidden" name="{{k}}" value="{{v}}">
 {% endfor %}
-<button>Download</button>
+<button>Download PDF</button>
 </form>
+</div>
+
+</body>
+</html>
