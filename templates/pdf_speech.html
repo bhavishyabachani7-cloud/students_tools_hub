@@ -1,0 +1,9 @@
+<form method="POST">
+<textarea name="text"></textarea>
+<button>Generate</button>
+</form>
+
+{% if ready %}
+<audio controls src="/download-audio"></audio>
+<a href="/download-audio">Download</a>
+{% endif %}
