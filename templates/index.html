@@ -1,14 +1,75 @@
-<link rel="stylesheet" href="/static/style.css">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Toolkit</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
 
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo">StudentToolkit 🚀</div>
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+    </div>
+</div>
+
+<!-- HERO -->
 <div class="hero">
-<h1>Student Toolkit 🚀</h1>
+    <h1>Your Ultimate Student Toolkit</h1>
+    <p>All essential tools in one place — fast, free & easy to use</p>
+    <button class="cta" onclick="document.getElementById('tools').scrollIntoView()">
+        Start Using Tools →
+    </button>
 </div>
 
-<div class="container">
-<div class="card"><a href="/resume">Resume</a></div>
-<div class="card"><a href="/summarizer">Summarizer</a></div>
-<div class="card"><a href="/pdf-to-speech">Text to Speech</a></div>
-<div class="card"><a href="/image-compressor">Image Compressor</a></div>
-<div class="card"><a href="/merge-pdf">Merge PDF</a></div>
-<div class="card"><a href="/split-pdf">Split PDF</a></div>
+<!-- TOOLS -->
+<div class="container" id="tools">
+
+    <div class="card">
+        <h3>📄 Resume Builder</h3>
+        <p>Create professional resumes instantly</p>
+        <a href="/resume">Use Tool →</a>
+    </div>
+
+    <div class="card">
+        <h3>✍️ Summarizer</h3>
+        <p>Convert long text into short summaries</p>
+        <a href="/summarizer">Use Tool →</a>
+    </div>
+
+    <div class="card">
+        <h3>🔊 Text to Speech</h3>
+        <p>Convert text into audio with download</p>
+        <a href="/pdf-to-speech">Use Tool →</a>
+    </div>
+
+    <div class="card">
+        <h3>🖼️ Image Compressor</h3>
+        <p>Reduce image size without quality loss</p>
+        <a href="/image-compressor">Use Tool →</a>
+    </div>
+
+    <div class="card">
+        <h3>📑 Merge PDF</h3>
+        <p>Combine multiple PDFs into one</p>
+        <a href="/merge-pdf">Use Tool →</a>
+    </div>
+
+    <div class="card">
+        <h3>✂️ Split PDF</h3>
+        <p>Extract pages from PDFs easily</p>
+        <a href="/split-pdf">Use Tool →</a>
+    </div>
+
 </div>
+
+<!-- FOOTER -->
+<div class="footer">
+    © 2026 Student Toolkit | Free Forever 🚀
+</div>
+
+</body>
+</html>
