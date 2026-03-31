@@ -1,0 +1,8 @@
+<form method="POST" enctype="multipart/form-data">
+<input type="file" name="image">
+<button>Compress</button>
+</form>
+
+{% if file %}
+<a href="{{file}}">Download</a>
+{% endif %}
