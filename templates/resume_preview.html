@@ -1,0 +1,9 @@
+<h2>{{data.name}}</h2>
+<p>{{data.email}}</p>
+
+<form method="POST" action="/download-resume">
+{% for k,v in data.items() %}
+<input type="hidden" name="{{k}}" value="{{v}}">
+{% endfor %}
+<button>Download</button>
+</form>
