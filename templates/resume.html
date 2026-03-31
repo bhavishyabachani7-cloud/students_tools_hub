@@ -1,10 +1,82 @@
-<form method="POST">
-<input name="name" placeholder="Name">
-<input name="email">
-<input name="phone">
-<input name="linkedin">
-<textarea name="skills"></textarea>
-<textarea name="education"></textarea>
-<textarea name="experience"></textarea>
-<button>Preview</button>
-</form>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Builder</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        .resume-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            padding: 40px;
+        }
+
+        .form-box {
+            background: rgba(255,255,255,0.05);
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        .form-box input, .form-box textarea, .form-box select {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 6px;
+            border: none;
+        }
+
+        .preview-box {
+            background: white;
+            color: black;
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg,#38bdf8,#6366f1);
+            border: none;
+            padding: 10px;
+            color: white;
+            cursor: pointer;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="resume-container">
+
+<!-- FORM -->
+<div class="form-box">
+    <h2>Create Resume</h2>
+
+    <form method="POST">
+        <input name="name" placeholder="Full Name" required>
+        <input name="email" placeholder="Email">
+        <input name="phone" placeholder="Phone">
+        <input name="linkedin" placeholder="LinkedIn">
+
+        <textarea name="skills" placeholder="Skills"></textarea>
+        <textarea name="education" placeholder="Education"></textarea>
+        <textarea name="experience" placeholder="Experience"></textarea>
+
+        <select name="template">
+            <option value="classic">Classic</option>
+            <option value="modern">Modern</option>
+            <option value="minimal">Minimal</option>
+        </select>
+
+        <button class="btn">Preview Resume</button>
+    </form>
+</div>
+
+<!-- PREVIEW SAMPLE -->
+<div class="preview-box">
+    <h2>Preview</h2>
+    <p>This is how your resume will look after submission.</p>
+</div>
+
+</div>
+
+</body>
+</html>
