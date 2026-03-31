@@ -16,14 +16,13 @@ app = Flask(__name__)
 OUTPUT_FOLDER = "outputs"
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
-tinify.key = "jMFKft9K8kv6pT3J7GDzWmgqT9YnLzw8"
+tinify.key = os.getenv("TINIFY_KEY")
 
-# ---------------- HOME ----------------
 @app.route("/")
 def home():
     return render_template("index.html")
 
-# ---------------- RESUME ----------------
+# -------- RESUME --------
 @app.route("/resume", methods=["GET", "POST"])
 def resume():
     if request.method == "POST":
@@ -47,10 +46,9 @@ def download_resume():
     content.append(Spacer(1, 15))
 
     def section(title, text):
-        content.append(Paragraph(f"<font size=14 color='#2563eb'><b>{title}</b></font>", styles['Heading2']))
-        content.append(Spacer(1, 5))
+        content.append(Paragraph(f"<b>{title}</b>", styles['Heading2']))
         content.append(Paragraph(text, styles['Normal']))
-        content.append(Spacer(1, 12))
+        content.append(Spacer(1, 10))
 
     section("Skills", request.form["skills"])
     section("Education", request.form["education"])
@@ -59,7 +57,7 @@ def download_resume():
     doc.build(content)
     return send_file(file_path, as_attachment=True)
 
-# ---------------- SUMMARIZER ----------------
+# -------- SUMMARIZER --------
 @app.route("/summarizer", methods=["GET", "POST"])
 def summarizer():
     summary = ""
@@ -81,7 +79,7 @@ def summarizer():
 
     return render_template("summarizer.html", summary=summary)
 
-# ---------------- TEXT TO SPEECH ----------------
+# -------- TEXT TO SPEECH --------
 @app.route("/pdf-to-speech", methods=["GET", "POST"])
 def pdf_to_speech():
     if request.method == "POST":
@@ -96,7 +94,7 @@ def pdf_to_speech():
 def download_audio():
     return send_file(os.path.join(OUTPUT_FOLDER, "audio.mp3"), as_attachment=True)
 
-# ---------------- IMAGE COMPRESSOR ----------------
+# -------- IMAGE COMPRESSOR --------
 @app.route("/image-compressor", methods=["GET", "POST"])
 def image_compressor():
     file_url = None
@@ -118,7 +116,7 @@ def image_compressor():
 def download_file(filename):
     return send_file(os.path.join(OUTPUT_FOLDER, filename), as_attachment=True)
 
-# ---------------- PDF MERGE ----------------
+# -------- PDF MERGE --------
 @app.route("/merge-pdf", methods=["GET", "POST"])
 def merge_pdf():
     if request.method == "POST":
@@ -138,7 +136,7 @@ def merge_pdf():
 
     return render_template("merge_pdf.html")
 
-# ---------------- PDF SPLIT ----------------
+# -------- PDF SPLIT --------
 @app.route("/split-pdf", methods=["GET", "POST"])
 def split_pdf():
     if request.method == "POST":
@@ -161,6 +159,22 @@ def split_pdf():
 
     return render_template("split_pdf.html")
 
-# ---------------- RUN ----------------
+# -------- STATIC PAGES --------
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
+
+@app.route("/privacy")
+def privacy():
+    return render_template("privacy.html")
+
+@app.route("/terms")
+def terms():
+    return render_template("terms.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
